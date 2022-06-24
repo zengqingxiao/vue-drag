@@ -1,32 +1,67 @@
-<!DOCTYPE html>
-<html lang="">
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="/vue-drag-demo/favicon.ico"><title>vue-drag-demo</title><style>.vue-loading-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.7);
+            z-index: 999999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #333;
+            font-size: 12px;
+        }
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="icon" href="favicon.ico">
-  <title>drag</title>
-  <link href="css/chunk-3eba2ff4.d684c866.css" rel="prefetch">
-  <link href="css/chunk-61a149b4.dd42b0de.css" rel="prefetch">
-  <link href="css/chunk-7fa93a6a.55c62738.css" rel="prefetch">
-  <link href="js/about.2ac3f282.js" rel="prefetch">
-  <link href="js/chunk-3eba2ff4.5de355f9.js" rel="prefetch">
-  <link href="js/chunk-61a149b4.b2adb71c.js" rel="prefetch">
-  <link href="js/chunk-7fa93a6a.bfc01edf.js" rel="prefetch">
-  <link href="css/app.3db62d74.css" rel="preload" as="style">
-  <link href="css/chunk-vendors.c470e980.css" rel="preload" as="style">
-  <link href="js/app.59d8381b.js" rel="preload" as="script">
-  <link href="js/chunk-vendors.c677201d.js" rel="preload" as="script">
-  <link href="css/chunk-vendors.c470e980.css" rel="stylesheet">
-  <link href="css/app.3db62d74.css" rel="stylesheet">
-</head>
+        .vue-circle-path {
+            stroke: #0f62fe;
+            /* 给画笔设置一个颜色 */
+            stroke-width: 2;
+            /* 设置线条的宽度 */
+            stroke-dasharray: 95, 126;
+            /* 设置实现长95，虚线长126 */
+            stroke-dashoffset: 0;
+            /* 设置虚线的偏移位置 */
+            animation: vue-loading-dash 1.5s ease-in-out infinite;
+        }
 
-<body><noscript><strong>We're sorry but drag doesn't work properly without JavaScript enabled. Please enable it to
-      continue.</strong></noscript>
-  <div id="app"></div>
-  <script src="js/chunk-vendors.c677201d.js"></script>
-  <script src="js/app.59d8381b.js"></script>
-</body>
+        @keyframes vue-loading-dash {
+            0% {
+                stroke-dasharray: 1, 126;
+                /* 实线部分1，虚线部分126 */
+                stroke-dashoffset: 0;
+                /* 前面1/126显示实线，后面125显示空白 */
+            }
 
-</html>
+            50% {
+                stroke-dasharray: 95, 126;
+                /* 实线部分95，虚线部分126 */
+                stroke-dashoffset: -31px
+                    /* 顺时针偏移31/126，即前31/126显示空白，后面3/4显示线条 */
+            }
+
+            to {
+                stroke-dasharray: 6, 120;
+                /* 实线部分6，虚线部分120 */
+                stroke-dashoffset: -120px;
+                /* 最后顺时针偏移120/126，即前120/126显示空白，后面6点显示线条部分 */
+            }
+        }
+
+        .vue-loading-svg {
+            width: 2.5em;
+            height: 2.5em;
+            max-width: 50px;
+            /* 设置svg显示区域大小 */
+            max-height: 50px;
+            animation: vue-loading-rotate 1.5s infinite ease-in-out;
+            /* 给svg也加上一个旋转动画 */
+        }
+
+        @keyframes vue-loading-rotate {
+            to {
+                transform: rotate(1turn);
+                /* 旋转1圈 */
+            }
+        }</style><link href="/vue-drag-demo/css/chunk-2142818a.74ef4024.css" rel="prefetch"><link href="/vue-drag-demo/css/chunk-3ef62fca.d4cdb83a.css" rel="prefetch"><link href="/vue-drag-demo/css/chunk-64871868.ee5a7fa3.css" rel="prefetch"><link href="/vue-drag-demo/css/chunk-6b8655be.18db6b12.css" rel="prefetch"><link href="/vue-drag-demo/css/chunk-cac1b34a.42c8fb88.css" rel="prefetch"><link href="/vue-drag-demo/css/chunk-cfacd118.ed76efeb.css" rel="prefetch"><link href="/vue-drag-demo/js/chunk-2142818a.4d963e14.js" rel="prefetch"><link href="/vue-drag-demo/js/chunk-3ef62fca.fdbddecc.js" rel="prefetch"><link href="/vue-drag-demo/js/chunk-64871868.4662d61a.js" rel="prefetch"><link href="/vue-drag-demo/js/chunk-6b8655be.0887301f.js" rel="prefetch"><link href="/vue-drag-demo/js/chunk-cac1b34a.8fda10f6.js" rel="prefetch"><link href="/vue-drag-demo/js/chunk-cfacd118.fc4c9e4f.js" rel="prefetch"><link href="/vue-drag-demo/css/app.46312347.css" rel="preload" as="style"><link href="/vue-drag-demo/css/chunk-vendors.a16c4353.css" rel="preload" as="style"><link href="/vue-drag-demo/js/app.5d9b8575.js" rel="preload" as="script"><link href="/vue-drag-demo/js/chunk-vendors.0398ba1f.js" rel="preload" as="script"><link href="/vue-drag-demo/css/chunk-vendors.a16c4353.css" rel="stylesheet"><link href="/vue-drag-demo/css/app.46312347.css" rel="stylesheet"></head><body><noscript><strong>We're sorry but vue-drag-demo doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><div id="app"><div class="vue-loading-container"><svg viewBox="0 0 50 50" class="vue-loading-svg"><circle cx="25" cy="25" r="20" fill="none" class="vue-circle-path"></circle></svg><p>正在努力加载页面，请耐心等候...</p></div></div><script src="/vue-drag-demo/js/chunk-vendors.0398ba1f.js"></script><script src="/vue-drag-demo/js/app.5d9b8575.js"></script></body></html>
